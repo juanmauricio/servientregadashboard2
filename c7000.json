@@ -1,0 +1,82 @@
+{"C7000":{
+      "Enclosure Name":"USE818AMMP",
+      "Enclosure Type":"BladeSystem c7000 Enclosure",
+      "Part Number":"412152-B21",
+      "Serial Number": "USE818AMMP",
+      "UUID": "09USE818AMMP",
+      "Status":{
+                "Status": "OK",
+                "Internal Data": "OK",
+                "Redundancy": "OK",
+                "Onboard Administrator":"OK",
+                "Power Subsystem":"OK",
+                "Cooling Subsystem":"OK",
+                "Fans":[
+                                {"Name":"Fan 1", "Model":"Active Cool 200 Fan", "PartNumnber":"412140-B21" , "RPM": "17307", "Percentage": "96%"},
+                                {"Name":"Fan 2", "Model":"Active Cool 200 Fan", "PartNumnber":"412140-B21" , "RPM": "17307", "Percentage": "96%"},
+                                {"Name":"Fan 3", "Model":"Active Cool 200 Fan", "PartNumnber":"412140-B21" , "RPM": "17307", "Percentage": "96%"},
+                                {"Name":"Fan 4", "Model":"Active Cool 200 Fan", "PartNumnber":"412140-B21" , "RPM": "17307", "Percentage": "96%"},
+                                {"Name":"Fan 5", "Model":"Active Cool 200 Fan", "PartNumnber":"412140-B21" , "RPM": "17307", "Percentage": "96%"},
+                                {"Name":"Fan 6", "Model":"Active Cool 200 Fan", "PartNumnber":"412140-B21" , "RPM": "17307", "Percentage": "96%"}
+                ],
+                "Servers":[
+                                {"name":"Blade #1", "model": "ProLiant BL480c G1", "Serial Number": "USM64204B1", "Temp":"20C","TempStatus":"OK", "Power": "On", "Fan": "27%", "Internal Data": "OK","Management Processor": "OK", "I/O Configuration": "OK", "Power": "OK", "Cooling": "OK", "Location": "OK", "Device Failure": "OK", "Device Degraded": "OK","iLO Network": "OK" },
+                                {"name":"Blade #2", "model": "Integrity BL860c", "Serial Number": "CSJ0634214", "Temp":"20C","TempStatus":"OK","Power": "On", "Fan": "27%", "Internal Data": "OK","Management Processor": "OK", "I/O Configuration": "OK", "Power": "OK", "Cooling": "OK", "Location": "OK", "Device Failure": "OK", "Device Degraded": "OK","iLO Network": "OK" },
+                                {"name":"Blade #7", "model": "ProLiant BL460c G1", "Serial Number": "USM62401EP", "Temp":"20C","TempStatus":"OK","Power": "On", "Fan": "27%", "Internal Data": "OK","Management Processor": "OK", "I/O Configuration": "OK", "Power": "OK", "Cooling": "OK", "Location": "OK", "Device Failure": "OK", "Device Degraded": "OK","iLO Network": "OK" }
+                ],
+                "PowerSupplies":[
+                                  {"name":"Power Supply 1", "model": "438203-001", "Serial Number": "USM64204B1",},
+                ]
+      }
+    }
+
+}
+
+SERVICIO  C7000
+{"C7000":{
+      "EnclosureName":"USE818AMMP",
+      "EnclosureType":"BladeSystem c7000 Enclosure",
+      "PartNumber":"412152-B21",
+      "SerialNumber": "USE818AMMP",
+      "UUID": "09USE818AMMP",
+      "Status":{
+                "Status": "OK",
+                "InternalData": "OK",
+                "Redundancy": "OK",
+                "OnboardAdministrator":"OK",
+                "PowerSubsystem":"OK",
+                "CoolingSubsystem":"OK",
+                "Fans":[
+                                {"Name":"Fan 1", "Model":"Active Cool 200 Fan", "PartNumnber":"412140-B21" , "RPM": "17307", "Percentage": "96%"},
+                                {"Name":"Fan 2", "Model":"Active Cool 200 Fan", "PartNumnber":"412140-B21" , "RPM": "17307", "Percentage": "96%"},
+                                {"Name":"Fan 3", "Model":"Active Cool 200 Fan", "PartNumnber":"412140-B21" , "RPM": "17307", "Percentage": "96%"},
+                                {"Name":"Fan 4", "Model":"Active Cool 200 Fan", "PartNumnber":"412140-B21" , "RPM": "17307", "Percentage": "96%"},
+                                {"Name":"Fan 5", "Model":"Active Cool 200 Fan", "PartNumnber":"412140-B21" , "RPM": "17307", "Percentage": "96%"},
+                                {"Name":"Fan 6", "Model":"Active Cool 200 Fan", "PartNumnber":"412140-B21" , "RPM": "17307", "Percentage": "96%"}
+                ],
+                "PowerSupplies":[
+                                  {"name":"Power Supply 1", "model": "438203-001", "Serial Number": "USM64204B1"}
+                ]
+      }
+    }
+}
+
+SERVICIO BLADE
+{"Servers":
+            {"name":"Blade #1",
+              "model": "ProLiant BL480c G1",
+              "Serial Number": "USM64204B1",
+              "Temp":"20C","TempStatus":"OK",
+              "Power": "On",
+              "Fan": "27%",
+              "Internal Data": "OK",
+              "Management Processor": "OK",
+              "I/O Configuration": "OK",
+              "Power": "OK",
+              "Cooling": "OK",
+              "Location": "OK",
+              "Device Failure":
+              "OK",
+              "Device Degraded": "OK",
+              "iLO Network": "OK" }
+}
