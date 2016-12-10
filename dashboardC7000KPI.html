@@ -18,6 +18,7 @@
 
     <script type="text/javascript" src="SQLMEMKPI.js"></script>
 	<script type="text/javascript" src="SQLHDDKPI.js"></script>
+	<script type="text/javascript" src="C7000datagrid.js"></script>
 
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 	<meta name="viewport" content="width=device-width">
@@ -43,7 +44,7 @@ Tip 1: you can change the color of the sidebar using: data-color="blue | azure |
 Tip 2: you can also add an image using data-image tag
 -->
 			<div class="sidebar-wrapper">
-				<div class="logo"> <a href="http://www.creative-tim.com" class="simple-text">
+				<div class="logo"> <a href="" class="simple-text">
 NDI DASHBOARD </a> </div>
 				<ul class="nav">
 					<li class="active">
@@ -62,26 +63,6 @@ NDI DASHBOARD </a> </div>
 							<p>Table List</p>
 						</a>
 					</li>
-					<li>
-						<a href="typography.html">
-							<p>Typography</p>
-						</a>
-					</li>
-					<li>
-						<a href="icons.html">
-							<p>Icons</p>
-						</a>
-					</li>
-					<li>
-						<a href="maps.html">
-							<p>Maps</p>
-						</a>
-					</li>
-					<li>
-						<a href="notifications.html">
-							<p>Notifications</p>
-						</a>
-					</li>
 				</ul>
 			</div>
 		</div>
@@ -90,7 +71,6 @@ NDI DASHBOARD </a> </div>
 			<div class="container-fluid">
 				<div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#">Dashboard</a> </div>
-
 			</div>
 			<div class="content">
 				<div class="container-fluid">
@@ -102,8 +82,10 @@ NDI DASHBOARD </a> </div>
 									<p class="category">KPI for SQL Server</p>
 								</div>
 								<div class="content">
-									<div id="circularGaugeContainer" style="height: 300px; max-width: 300px;"></div>
-                                    <div id="chartContainerSQLMEM" style="height: 300px; max-width: 600px;"></div>
+									<h3><div id="c7000EnclosureType"</div></h3><br>
+                                    <h3><div id="statusC7000"</div></h3><br>									
+									<h3><div id="enclosureName"</div></h3><br>
+									<h3><div id="c7000PartNumber"</div></h3><br>
 									<div class="footer">
 										<div class="legend">
 											 </div>
@@ -121,8 +103,7 @@ NDI DASHBOARD </a> </div>
 									<p class="category">KPI for SQL Server</p>
 								</div>
 								<div class="content">
-									<div id="circularGaugeContainerSQLHDD" style="height: 300px; max-width: 300px;"></div>
-                                    <div id="chartContainerSQLHDD" style="height: 300px; max-width: 600px;"></div>
+
 									<div class="footer">
 										<div class="legend">
 											 </div>

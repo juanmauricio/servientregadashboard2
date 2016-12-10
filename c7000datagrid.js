@@ -4,16 +4,27 @@ var customStoreSQLMEM = new DevExpress.data.CustomStore({
         var d = $.Deferred();
         $.getJSON('http://localhost:3000/c7000').done(function (data) {
             d.resolve(data, { totalCount: data.length });
-            var enclosureName = data.EnclosureName;
-            var c7000status = data.Status.Status;
+            var enclosureName = data.c7000[0].value.EnclosureName;
+            var c7000status = data.c7000[0].value.Status;
+            var c7000EnclosureType = data.c7000[0].value.EnclosureType;
+            var c7000PartNumber = data.c7000[0].value.PartNumber;
+
+/*
             var c7000IDstatus = data.Status.InternalData;
             var c7000REDstatus = data.Status.Redundancy;
             var c7000OAstatus = data.Status.OnboardAdministrator;
             var c7000CSstatus = data.Status.CoolingSubsystem;
+*/
 
             document.getElementById("enclosureName").innerHTML = enclosureName;
 
             document.getElementById("statusC7000").innerHTML = c7000status;
+
+
+            document.getElementById("c7000EnclosureType").innerHTML = c7000EnclosureType;
+            document.getElementById("c7000PartNumber").innerHTML = c7000PartNumber;
+
+/*
             if (c7000status == "OK")
             {
               document.getElementById("iconC7000Class").className = "fa fa-thumbs-up fa-3x";
@@ -26,6 +37,8 @@ var customStoreSQLMEM = new DevExpress.data.CustomStore({
             document.getElementById("c7000REDstatus").innerHTML = "Redundancy: " + c7000REDstatus;
             document.getElementById("c7000OAstatus").innerHTML = "Onboard Administrator: " + c7000OAstatus;
             document.getElementById("c7000CSstatus").innerHTML = "Cooling Subsystem: " + c7000CSstatus;
+*/
+
         });
         return d.promise();
     }
