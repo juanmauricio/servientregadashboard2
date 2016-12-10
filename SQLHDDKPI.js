@@ -1,20 +1,23 @@
 var currentSQLHDDMeasure;
 
+
 var customStoreSQLHDD = new DevExpress.data.CustomStore({
     load: function (loadOptions) {
         var d = $.Deferred();
-        $.getJSON('http://localhost:3000/sqlhdd/').done(function (data) {
-            d.resolve(data, { totalCount: data.length });
-            currentSQLHDDMeasure = data[data.length-1].value;
+        $.getJSON('http://localhost:3000/sqlhdd').done(function (data) {
+            d.resolve(data.sqlhdd, { totalCount: data.sqlhdd.length });
+            currentSQLHDDMeasure = data.sqlhdd[data.sqlhdd.length-1].value;
         });
         return d.promise();
     }
 });
 
+
+
 setInterval(function(){
   customStoreSQLHDD.load();
 
-  $("#SQLHDDContainer2").dxChart({
+  $("#chartContainerSQLHDD").dxChart({
       dataSource: customStoreSQLHDD,
       commonSeriesSettings: {
           argumentField: 'measuredatetime'
@@ -24,7 +27,7 @@ setInterval(function(){
       ]
   });
 
-$("#circularGaugeContainer2").dxCircularGauge({
+$("#circularGaugeContainerSQLHDD").dxCircularGauge({
   title: {
       text: 'SQL HDD',
       font: {
