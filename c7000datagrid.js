@@ -1,5 +1,5 @@
 
-var customStoreSQLMEM = new DevExpress.data.CustomStore({
+var c7000CustomStore = new DevExpress.data.CustomStore({
     load: function (loadOptions) {
         var d = $.Deferred();
         $.getJSON('http://localhost:3000/c7000').done(function (data) {
@@ -17,13 +17,9 @@ var customStoreSQLMEM = new DevExpress.data.CustomStore({
 */
 
             document.getElementById("enclosureName").innerHTML = enclosureName;
-
             document.getElementById("statusC7000").innerHTML = c7000status;
-
-
             document.getElementById("c7000EnclosureType").innerHTML = c7000EnclosureType;
             document.getElementById("c7000PartNumber").innerHTML = c7000PartNumber;
-
 /*
             if (c7000status == "OK")
             {
@@ -31,7 +27,6 @@ var customStoreSQLMEM = new DevExpress.data.CustomStore({
             }else {
               document.getElementById("iconC7000Class").className = "fa fa-thumbs-down fa-3x";
             };
-
 
             document.getElementById("c7000IDstatus").innerHTML = "Internal Data: " + c7000IDstatus;
             document.getElementById("c7000REDstatus").innerHTML = "Redundancy: " + c7000REDstatus;
@@ -45,16 +40,20 @@ var customStoreSQLMEM = new DevExpress.data.CustomStore({
 });
 
 
-
 var c7000Servers = new DevExpress.data.CustomStore({
     load: function (loadOptions) {
         var d = $.Deferred();
         $.getJSON('http://localhost:3000/servers').done(function (data) {
-            d.resolve(data, { totalCount: data.length });
+            d.resolve(data.blade, { totalCount: data.blade.length });
         });
         return d.promise();
     }
 });
+
+
+setInterval(function(){
+  c7000Servers.load();
+  c7000CustomStore.load();
 
 var gdsc7000Servers = {
     store: c7000Servers
@@ -62,17 +61,20 @@ var gdsc7000Servers = {
 
 
 $(function () {
-    $("#gridContainer").dxDataGrid({
+    $("#gridContainerC7000").dxDataGrid({
         dataSource: gdsc7000Servers,
+        columnAutoWidth: true,
         columns: [
-			{ dataField: 'Name', width: 125 },
-			{ dataField: 'model', visible: true, width: 200  },
-			{ dataField: 'Temp', visible: true },
-			{ dataField: 'TempStatus', visible: true, width: 100  },
-			{ dataField: 'Power', visible: true },
-			{ dataField: 'Cooling', visible: true, width: 100  },
-			{ dataField: 'ILONetwork', visible: true, width: 100  },
-			{ dataField: 'DeviceDegraded', visible: true, width: 150  }
+			{ dataField: 'name', width: 125, caption: "Name" },
+            { dataField: 'value.ManagementProcessor', width: 125, caption: "Management  Processor" },
+            { dataField: 'value.ProductName', width: 125, caption: "Product Name" },
+            { dataField: 'value.InternalData', width: 125, caption: "Internal Data" },
+            { dataField: 'value.IOConfiguration', width: 125, caption: "IO Configuration" },
+            { dataField: 'value.Power', width: 75, caption: "Power" },
+            { dataField: 'value.Cooling', width: 75, caption: "Cooling" },
+            { dataField: 'value.DeviceFailure', width: 125, caption: "Device Failure" },
+            { dataField: 'value.DeviceDegraded', width: 125, caption: "Device Degraded" },
+            { dataField: 'value.iLONetwork', width: 125, caption: "ILO Network" }
         ],
         columnChooser: { enabled: false },
         allowColumnReordering: false,
@@ -87,3 +89,5 @@ $(function () {
         selection: { mode: 'none' }
     });
 });
+
+}, 5000);
