@@ -1,31 +1,13 @@
-var chartDataSource2 = [
-    { hora: '12:25', Oceania: 100 },
-    { hora: '12:26', Oceania: 150 },
-    { hora: '12:27', Oceania: 160 },
-    { hora: '12:28', Oceania: 170 },
-    { hora: '12:29', Oceania: 200 },
-    { hora: '12:30', Oceania: 225 },
-    { hora: '12:31', Oceania: 300 }
-];
 
-var chartDataSource3 = [
-    { hora: '12:25', Oceania: 99.9 },
-    { hora: '12:26', Oceania: 99.8 },
-    { hora: '12:27', Oceania: 99.8 },
-    { hora: '12:28', Oceania: 99.7 },
-    { hora: '12:29', Oceania: 99.9 },
-    { hora: '12:30', Oceania: 100 },
-    { hora: '12:31', Oceania: 99.9 }
-];
 
 var currentSQLMEMMeasure;
 
 var customStoreSQLMEM = new DevExpress.data.CustomStore({
     load: function (loadOptions) {
         var d = $.Deferred();
-        $.getJSON('http://localhost:3000/sqlmem/').done(function (data) {
-            d.resolve(data, { totalCount: data.length });
-            currentSQLMEMMeasure = data[data.length-1].value;
+        $.getJSON('http://localhost:3000/sqlmem').done(function (data) {
+            d.resolve(data.sqlmem, { totalCount: data.length });
+            currentSQLMEMMeasure = data.sqlmem[data.sqlmem.length-1].value;
         });
         return d.promise();
     }
@@ -39,7 +21,7 @@ var gridDataSourceConfiguration = {
 setInterval(function(){
   customStoreSQLMEM.load();
 
-  $("#chartContainer").dxChart({
+  $("#chartContainerSQLMEM").dxChart({
     dataSource: gridDataSourceConfiguration,
     commonSeriesSettings: {
         argumentField: 'measuredatetime'
@@ -67,7 +49,7 @@ $("#circularGaugeContainer").dxCircularGauge({
   },
     scale: {
         startValue: 0,
-        endValue: 16
+        endValue: 128000
     },
     value: Number(currentSQLMEMMeasure),
     subvalues: [8,15],
@@ -75,8 +57,8 @@ $("#circularGaugeContainer").dxCircularGauge({
     //subvalueIndicator: {type: 'textCloud'},
     rangeContainer: {
         ranges: [
-            { startValue: 0, endValue: 12,  color: 'green' },
-            { startValue: 12,   endValue: 16, color: 'red' }
+            { startValue: 0, endValue: 100000,  color: 'green' },
+            { startValue: 100000,   endValue: 128000, color: 'red' }
         ]
     }
 });
