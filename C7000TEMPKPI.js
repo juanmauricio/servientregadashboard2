@@ -3,16 +3,16 @@ var C7000TempMeasure;
 var customStoreC7000Temp = new DevExpress.data.CustomStore({
     load: function (loadOptions) {
         var d = $.Deferred();
-        $.getJSON('http://localhost:3000/ciscotemp/').done(function (data) {
-            d.resolve(data, { totalCount: data.length });
-            C7000TempMeasure = data[data.length-1].value;
+        $.getJSON('http://localhost:3000/c7000temp').done(function (data) {
+            d.resolve(data.c7000temp, { totalCount: data.c7000temp.length });
+            C7000TempMeasure = data.c7000temp[data.c7000temp.length-1].value;
         });
         return d.promise();
     }
 });
 
 setInterval(function(){
-  customStoreSQLHDD.load();
+  customStoreC7000Temp.load();
 
   $("#C7000TempChart").dxChart({
       dataSource: customStoreC7000Temp,
@@ -20,7 +20,7 @@ setInterval(function(){
           argumentField: 'measuredatetime'
       },
       series: [
-          { name: 'SQL HDD', valueField: 'value', showInLegend: false }
+          { name: 'CISCO Temp', valueField: 'value', showInLegend: false }
       ]
   });
 

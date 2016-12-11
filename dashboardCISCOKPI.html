@@ -16,8 +16,7 @@
     <link rel="stylesheet" type="text/css" href="lib/css/dx.light.css">
     <link rel="stylesheet" type="text/css" href="lib/css/Table.css">
 
-    <script type="text/javascript" src="SQLMEMKPI.js"></script>
-	<script type="text/javascript" src="SQLHDDKPI.js"></script>
+    <script type="text/javascript" src="CISCOTEMPKPI.js"></script>
 
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 	<meta name="viewport" content="width=device-width">
@@ -65,15 +64,15 @@ NDI DASHBOARD </a> </div>
 			<div class="content">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<div class="card">
 								<div class="header">
 									<h4 class="title"></h4>
-									<p class="category">KPI for SQL Server</p>
+									<p class="category">KPI CISCO</p>
 								</div>
 								<div class="content">
-									<div id="circularGaugeContainer" style="height: 300px; max-width: 300px;"></div>
-                                    <div id="chartContainerSQLMEM" style="height: 300px; max-width: 600px;"></div>
+									<div id="CISCOTempChartcircularGauge" style="height: 300px; max-width: 300px;"></div>
+                                    <div id="CISCOTempChart" style="height: 300px; max-width: 600px;"></div>
 									<div class="footer">
 										<div class="legend">
 											 </div>
@@ -84,15 +83,14 @@ NDI DASHBOARD </a> </div>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-md-8">
 							<div class="card">
 								<div class="header">
 									<h4 class="title"></h4>
-									<p class="category">KPI for SQL Server</p>
+									<p class="category"></p>
 								</div>
 								<div class="content">
-									<div id="circularGaugeContainerSQLHDD" style="height: 300px; max-width: 300px;"></div>
-                                    <div id="chartContainerSQLHDD" style="height: 300px; max-width: 600px;"></div>
+									<img src="images\CiscoTemperature.png"?
 									<div class="footer">
 										<div class="legend">
 											 </div>
@@ -103,31 +101,22 @@ NDI DASHBOARD </a> </div>
 								</div>
 							</div>
 						</div>	
-
-						<div class="col-md-6">
-							<div class="card">
-								<div class="header">
-									<h4 class="title"></h4>
-									<p class="category"></p>
-								</div>
-								<div class="content">
-									<img src="images\C7000SQLProblem2.png">
-
-									<div class="footer">
-										<div class="legend">
-											 </div>
-										<hr>
-										<div class="stats">
-											 </div>
-									</div>
-								</div>
-							</div>
-						</div>
 					</div>
 
 				</div>
 			</div>
 			<footer class="footer"> </footer>
+			<div class="container-fluid">
+				<nav class="pull-left">
+				</nav>
+				<ul>
+					<li> <a href="#"> Home </a> </li>
+					<li> <a href="#"> Company </a> </li>
+					<li> <a href="#"> Portfolio </a> </li>
+					<li> <a href="#"> Blog </a> </li>
+				</ul>
+				<p class="copyright pull-right"> © 2016 <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web </p>
+			</div>
 		</div>
 	</div>
 	<!-- Core JS Files -->
@@ -148,8 +137,6 @@ NDI DASHBOARD </a> </div>
 	<script src="assets/js/light-bootstrap-dashboard.js"></script>
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 
-	<script src="assets/js/demo.js"></script>
-	
 </body>
 
 </html>

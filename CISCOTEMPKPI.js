@@ -4,15 +4,15 @@ var customStoreCISCOTemp = new DevExpress.data.CustomStore({
     load: function (loadOptions) {
         var d = $.Deferred();
         $.getJSON('http://localhost:3000/ciscotemp/').done(function (data) {
-            d.resolve(data, { totalCount: data.length });
-            CISCOTempMeasure = data[data.length-1].value;
+            d.resolve(data.ciscotemp, { totalCount: data.ciscotemp.length });
+            CISCOTempMeasure = data.ciscotemp[data.ciscotemp.length-1].value;
         });
         return d.promise();
     }
 });
 
 setInterval(function(){
-  customStoreSQLHDD.load();
+  customStoreCISCOTemp.load();
 
   $("#CISCOTempChart").dxChart({
       dataSource: customStoreCISCOTemp,
