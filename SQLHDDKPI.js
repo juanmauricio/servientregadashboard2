@@ -1,12 +1,13 @@
 var currentSQLHDDMeasure;
-
+var totalSpaceHDD;
 
 var customStoreSQLHDD = new DevExpress.data.CustomStore({
     load: function (loadOptions) {
         var d = $.Deferred();
-        $.getJSON('http://localhost:3000/sqlhdd').done(function (data) {
+        $.getJSON('http://localhost:8080/Dashboard/?event_name=sqlhdd&num=10').done(function (data) {
             d.resolve(data.sqlhdd, { totalCount: data.sqlhdd.length });
-            currentSQLHDDMeasure = data.sqlhdd[data.sqlhdd.length-1].value;
+            currentSQLHDDMeasure = data.sqlhdd[data.sqlhdd.length-1].usage;
+            totalSpaceHDD = data.sqlhdd[data.sqlhdd.length-1].total;
         });
         return d.promise();
     }
@@ -16,6 +17,7 @@ var customStoreSQLHDD = new DevExpress.data.CustomStore({
 
 setInterval(function(){
   customStoreSQLHDD.load();
+    $("#last-measure-hdd").html("Last Measure " + currentSQLHDDMeasure);
 
   $("#chartContainerSQLHDD").dxChart({
       dataSource: customStoreSQLHDD,
@@ -23,7 +25,31 @@ setInterval(function(){
           argumentField: 'measuredatetime'
       },
       series: [
-          { name: 'SQL HDD', valueField: 'value', showInLegend: false }
+          { name: 'SQL HDD', valueField: 'usage', showInLegend: false }
+      ],
+      argumentAxis:  {
+        label: {
+          overlappingBehavior: {
+            mode: "rotate",
+            rotationAngle: 270
+          }
+        }
+      },
+      valueAxis: [
+        {
+          constantLines: [
+            {
+              color: "#FF0000",
+              value: Number(totalSpaceHDD)*0.8,
+              label: {
+                text: Number(totalSpaceHDD)*0.8,
+                visible: true,
+                position: "inside",
+                horizontalAlignment: "right"
+              }
+            }
+          ]
+        }
       ]
   });
 
@@ -43,8 +69,8 @@ $("#circularGaugeContainerSQLHDD").dxCircularGauge({
       }
   },
     scale: {
-        startValue: 500,
-        endValue: 2000
+        startValue: 0,
+        endValue: Number(totalSpaceHDD)
     },
     value: Number(currentSQLHDDMeasure),
     subvalues: [8,15],
@@ -52,8 +78,8 @@ $("#circularGaugeContainerSQLHDD").dxCircularGauge({
     //subvalueIndicator: {type: 'textCloud'},
     rangeContainer: {
         ranges: [
-            { startValue: 0, endValue: 1500,  color: 'green' },
-            { startValue: 1500,   endValue: 2000, color: 'red' }
+            { startValue: 0, endValue: Number(totalSpaceHDD)*0.8,  color: 'green' },
+            { startValue: Number(totalSpaceHDD)*0.8,   endValue: Number(totalSpaceHDD), color: 'red' }
         ]
     }
 });
